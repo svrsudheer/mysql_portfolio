@@ -1,0 +1,75 @@
+-> check the csv file headers and create a database with table and headers as name of the colunm
+ and data type
+--create database name
+create database shopping;
+use shopping;
+
+
+-- create table tablename(      )
+
+mysql> create table shopping_trends(
+customer_id int,
+age int,
+gender char(10),
+item_purchased char(20),
+category char(20),
+purchased_amount int,
+location char(20),
+size char(10),
+color char(20),
+season char(10),
+review_rating decimal,
+subscription_status char(10), 
+payment_method char(50),
+shipping_type char(50),
+discount_applied char(10),
+promo_code_used char(10),
+previous_perchases int,
+preferred_payment_method char(20),
+frequency_of_purchases char(50))
+;
+Query OK, 0 rows affected (0.65 sec)
+
+--upload data into table
+
+mysql> load data infile'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/shopping_trends.csv'
+    into table shopping_trends
+     fields terminated by ','
+    optionally enclosed by '"'
+    lines terminated by '\r\n'
+    ignore 1 rows;
+Query OK, 3900 rows affected (3.01 sec)
+Records: 3900  Deleted: 0  Skipped: 0  Warnings: 0
+--create table shopping_trends_updates
+mysql> create table shopping_trends_updates(
+    -> customer_id int,
+    -> age int,
+    -> gender char(10),
+    -> item_purchased char(20),
+    -> category char(20),
+    -> purchased_amount int,
+    -> location char(20),
+    -> size char(10),
+    -> color char(20),
+    -> season char(10),
+    -> review_rating decimal,
+    -> subscription_status char(10),
+    -> shipping_type char(50),
+    -> discount_applied char(10),
+    -> promo_code_used char(10),
+    -> previous_perchases int,
+    -> payment_method char(20),
+    -> frequency_of_purchases char(50))
+    -> ;
+Query OK, 0 rows affected (0.68 sec)
+
+--upload data into table
+
+mysql> load data infile'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/shopping_trends_updated.csv'
+    ->     into table shopping_trends_updates
+    ->      fields terminated by ','
+    ->     optionally enclosed by '"'
+    ->     lines terminated by '\r\n'
+    ->     ignore 1 rows;
+Query OK, 3900 rows affected, 3489 warnings (3.09 sec)
+Records: 3900  Deleted: 0  Skipped: 0  Warnings: 3489

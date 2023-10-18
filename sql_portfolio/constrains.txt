@@ -1,0 +1,85 @@
+constrains;;;;;
+
+NOT NULL
+CHECK
+DEFAULT
+PRIMARY KEY
+AUTO_INCREMENT
+UNIQUE
+INDEX
+ENUM
+FOREIGN KEY
+
+alter table shopping_trends
+modify customer_id int primary key auto_increment
+modify gender enum('Male','Female')
+modify size enum('L','S','M','XL','XXL')
+modify review_rating decimal(5,2) check(review_rating <=5);
+Query OK, 3900 rows affected (5.26 sec)
+Records: 3900  Duplicates: 0  Warnings: 0
+
+--before alter
+
+mysql> explain shopping_trends;
++--------------------------+---------------+------+-----+---------+-------+
+| Field                    | Type          | Null | Key | Default | Extra |
++--------------------------+---------------+------+-----+---------+-------+
+| customer_id              | int           | YES  |     | NULL    |       |
+| age                      | int           | YES  |     | NULL    |       |
+| gender                   | char(10)      | YES  |     | NULL    |       |
+| item_purchased           | char(20)      | YES  |     | NULL    |       |
+| category                 | char(20)      | YES  |     | NULL    |       |
+| purchased_amount         | int           | YES  |     | NULL    |       |
+| location                 | char(20)      | YES  |     | NULL    |       |
+| size                     | char(10)      | YES  |     | NULL    |       |
+| color                    | char(20)      | YES  |     | NULL    |       |
+| season                   | char(10)      | YES  |     | NULL    |       |
+| review_rating            | decimal(10,0) | YES  |     | NULL    |       |
+| subscription_status      | char(10)      | YES  |     | NULL    |       |
+| payment_method           | char(50)      | YES  |     | NULL    |       |
+| shipping_type            | char(50)      | YES  |     | NULL    |       |
+| discount_amount          | char(10)      | YES  |     | NULL    |       |
+| promo_code_used          | char(10)      | YES  |     | NULL    |       |
+| previous_perchases       | int           | YES  |     | NULL    |       |
+| preferred_payment_method | char(20)      | YES  |     | NULL    |       |
+| frequency_of_purchases   | char(50)      | YES  |     | NULL    |       |
++--------------------------+---------------+------+-----+---------+-------+
+19 rows in set (0.00 sec)
+
+
+--after alter-modify
+
+mysql> explain shopping_trends;
++--------------------------+------------------------------+------+-----+---------+----------------+
+| Field                    | Type                         | Null | Key | Default | Extra          |
++--------------------------+------------------------------+------+-----+---------+----------------+
+| customer_id              | int                          | NO   | PRI | NULL    | auto_increment |
+| age                      | int                          | YES  |     | NULL    |                |
+| gender                   | enum('Male','Female')        | YES  |     | NULL    |                |
+| item_purchased           | char(20)                     | YES  |     | NULL    |                |
+| category                 | char(20)                     | YES  |     | NULL    |                |
+| purchased_amount         | int                          | YES  |     | NULL    |                |
+| location                 | char(20)                     | YES  |     | NULL    |                |
+| size                     | enum('L','S','M','XL','XXL') | YES  |     | NULL    |                |
+| color                    | char(20)                     | YES  |     | NULL    |                |
+| season                   | char(10)                     | YES  |     | NULL    |                |
+| review_rating            | decimal(5,2)                 | YES  |     | NULL    |                |
+| subscription_status      | char(10)                     | YES  |     | NULL    |                |
+| payment_method           | char(50)                     | YES  |     | NULL    |                |
+| shipping_type            | char(50)                     | YES  |     | NULL    |                |
+| discount_amount          | char(10)                     | YES  |     | NULL    |                |
+| promo_code_used          | char(10)                     | YES  |     | NULL    |                |
+| previous_perchases       | int                          | YES  |     | NULL    |                |
+| preferred_payment_method | char(20)                     | YES  |     | NULL    |                |
+| frequency_of_purchases   | char(50)                     | YES  |     | NULL    |                |
++--------------------------+------------------------------+------+-----+---------+----------------+
+19 rows in set (0.00 sec)
+
+--adding foreign key to table 
+mysql> alter table shopping_trends_updates
+    -> add foreign key (customer_id) references shopping_trends(customer_id);
+Query OK, 3900 rows affected (5.45 sec)
+Records: 3900  Duplicates: 0  Warnings: 0
+
+
+

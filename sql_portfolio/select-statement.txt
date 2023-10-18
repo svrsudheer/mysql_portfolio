@@ -1,0 +1,299 @@
+--select statment to display table content;
+
+--getting table content
+
+mysql> explain shopping_trends;
++--------------------------+---------------+------+-----+---------+-------+
+| Field                    | Type          | Null | Key | Default | Extra |
++--------------------------+---------------+------+-----+---------+-------+
+| customer_id              | int           | YES  |     | NULL    |       |
+| age                      | int           | YES  |     | NULL    |       |
+| gender                   | char(10)      | YES  |     | NULL    |       |
+| item_purchased           | char(20)      | YES  |     | NULL    |       |
+| category                 | char(20)      | YES  |     | NULL    |       |
+| purchased_amount         | int           | YES  |     | NULL    |       |
+| location                 | char(20)      | YES  |     | NULL    |       |
+| size                     | char(10)      | YES  |     | NULL    |       |
+| color                    | char(20)      | YES  |     | NULL    |       |
+| season                   | char(10)      | YES  |     | NULL    |       |
+| review_rating            | decimal(10,0) | YES  |     | NULL    |       |
+| subscription_status      | char(10)      | YES  |     | NULL    |       |
+| payment_method           | char(50)      | YES  |     | NULL    |       |
+| shipping_type            | char(50)      | YES  |     | NULL    |       |
+| discount_amount          | char(10)      | YES  |     | NULL    |       |
+| promo_code_used          | char(10)      | YES  |     | NULL    |       |
+| previous_perchases       | int           | YES  |     | NULL    |       |
+| preferred_payment_method | char(20)      | YES  |     | NULL    |       |
+| frequency_of_purchases   | char(50)      | YES  |     | NULL    |       |
++--------------------------+---------------+------+-----+---------+-------+
+19 rows in set (0.00 sec)
+
+
+
+
+
+select customer_id,age,location,shipping_type from shopping_trends;
+
+---to know what are the loction 
+ select distinct location from shopping_trends;
++----------------+
+| location       |
++----------------+
+| Kentucky       |
+| Maine          |
+| Massachusetts  |
+| Rhode Island   |
+| Oregon         |
+| Wyoming        |
+| Montana        |
+| Louisiana      |
+| West Virginia  |
+| Missouri       |
+| Arkansas       |
+| Hawaii         |
+| Delaware       |
+| New Hampshire  |
+| New York       |
+| Alabama        |
+| Mississippi    |
+| North Carolina |
+| California     |
+| Oklahoma       |
+| Florida        |
+| Texas          |
+| Nevada         |
+| Kansas         |
+| Colorado       |
+| North Dakota   |
+| Illinois       |
+| Indiana        |
+| Arizona        |
+| Alaska         |
+| Tennessee      |
+| Ohio           |
+| New Jersey     |
+| Maryland       |
+| Vermont        |
+| New Mexico     |
+| South Carolina |
+| Idaho          |
+| Pennsylvania   |
+| Connecticut    |
+| Utah           |
+| Virginia       |
+| Georgia        |
+| Nebraska       |
+| Iowa           |
+| South Dakota   |
+| Minnesota      |
+| Washington     |
+| Wisconsin      |
+| Michigan       |
++----------------+
+
+
+
+----- select statement using where 
+
+
+mysql> select customer_id,age,location,shipping_type from shopping_trends where location ='south carolina';
++-------------+------+----------------+----------------+
+| customer_id | age  | location       | shipping_type  |
++-------------+------+----------------+----------------+
+|          56 |   40 | South Carolina | 2-Day Shipping |
+|          91 |   25 | South Carolina | Express        |
+|          92 |   44 | South Carolina | Standard       |
+|         137 |   39 | South Carolina | Free Shipping  |
+|         153 |   30 | South Carolina | Express        |
+|         198 |   59 | South Carolina | 2-Day Shipping |
+|         349 |   56 | South Carolina | Free Shipping  |
+|         377 |   51 | South Carolina | Express        |
+|         397 |   46 | South Carolina | Standard       |
+|         406 |   41 | South Carolina | Standard       |
+|         461 |   64 | South Carolina | Store Pickup   |
+|         503 |   59 | South Carolina | Express        |
+|         521 |   51 | South Carolina | Free Shipping  |
+|         528 |   21 | South Carolina | Next Day Air   |
+|         541 |   49 | South Carolina | Next Day Air   |
+|         573 |   56 | South Carolina | Next Day Air   |
+|         586 |   69 | South Carolina | Next Day Air   |
+|         601 |   22 | South Carolina | 2-Day Shipping |
+|         625 |   55 | South Carolina | Express        |
+|         636 |   27 | South Carolina | 2-Day Shipping |
+|         810 |   48 | South Carolina | Next Day Air   |
+|         861 |   26 | South Carolina | Standard       |
+|         882 |   52 | South Carolina | Next Day Air   |
+|         907 |   41 | South Carolina | Standard       |
+|         911 |   49 | South Carolina | Express        |
+|         964 |   21 | South Carolina | 2-Day Shipping |
+|        1014 |   59 | South Carolina | 2-Day Shipping |
+|        1083 |   54 | South Carolina | Next Day Air   |
+|        1145 |   41 | South Carolina | 2-Day Shipping |
+|        1179 |   37 | South Carolina | Express        |
+|        1185 |   63 | South Carolina | Express        |
+|        1191 |   62 | South Carolina | Next Day Air   |
+|        1311 |   43 | South Carolina | Store Pickup   |
+|        1350 |   21 | South Carolina | Next Day Air   |
+|        1507 |   35 | South Carolina | 2-Day Shipping |
+|        1548 |   46 | South Carolina | Standard       |
+|        1635 |   28 | South Carolina | Store Pickup   |
+|        1673 |   18 | South Carolina | Free Shipping  |
+|        1698 |   36 | South Carolina | Next Day Air   |
+|        1797 |   62 | South Carolina | Store Pickup   |
+|        1837 |   66 | South Carolina | 2-Day Shipping |
+|        1958 |   68 | South Carolina | Store Pickup   |
+|        2033 |   46 | South Carolina | Next Day Air   |
+|        2041 |   69 | South Carolina | Free Shipping  |
+|        2063 |   54 | South Carolina | Standard       |
+|        2072 |   69 | South Carolina | Store Pickup   |
+|        2076 |   46 | South Carolina | Express        |
+|        2095 |   53 | South Carolina | Standard       |
+|        2106 |   65 | South Carolina | Free Shipping  |
+|        2171 |   40 | South Carolina | Next Day Air   |
+|        2245 |   35 | South Carolina | 2-Day Shipping |
+|        2262 |   58 | South Carolina | Standard       |
+|        2333 |   36 | South Carolina | Store Pickup   |
+|        2603 |   65 | South Carolina | Free Shipping  |
+|        2648 |   60 | South Carolina | 2-Day Shipping |
+|        2661 |   24 | South Carolina | Express        |
+|        2805 |   65 | South Carolina | Standard       |
+|        2807 |   45 | South Carolina | Standard       |
+|        2818 |   25 | South Carolina | Standard       |
+|        2969 |   26 | South Carolina | Express        |
+|        3237 |   63 | South Carolina | Next Day Air   |
+|        3289 |   67 | South Carolina | Next Day Air   |
+|        3295 |   62 | South Carolina | Store Pickup   |
+|        3405 |   69 | South Carolina | 2-Day Shipping |
+|        3419 |   53 | South Carolina | Free Shipping  |
+|        3476 |   48 | South Carolina | Express        |
+|        3477 |   68 | South Carolina | Free Shipping  |
+|        3517 |   34 | South Carolina | Free Shipping  |
+|        3597 |   28 | South Carolina | Standard       |
+|        3601 |   67 | South Carolina | Free Shipping  |
+|        3690 |   47 | South Carolina | Standard       |
+|        3703 |   58 | South Carolina | Store Pickup   |
+|        3709 |   40 | South Carolina | Express        |
+|        3721 |   21 | South Carolina | Free Shipping  |
+|        3757 |   64 | South Carolina | Express        |
+|        3879 |   60 | South Carolina | 2-Day Shipping |
++-------------+------+----------------+----------------+
+76 rows in set (0.01 sec)
+
+-- 
+----- select statement using where and order by asc/desc
+mysql> select customer_id,age,location,shipping_type from shopping_trends where location ='south carolina' order by shipping_type  ;
++-------------+------+----------------+----------------+
+| customer_id | age  | location       | shipping_type  |
++-------------+------+----------------+----------------+
+|          56 |   40 | South Carolina | 2-Day Shipping |
+|        3879 |   60 | South Carolina | 2-Day Shipping |
+|        1145 |   41 | South Carolina | 2-Day Shipping |
+|         198 |   59 | South Carolina | 2-Day Shipping |
+|        2648 |   60 | South Carolina | 2-Day Shipping |
+|        2245 |   35 | South Carolina | 2-Day Shipping |
+|        1507 |   35 | South Carolina | 2-Day Shipping |
+|        1837 |   66 | South Carolina | 2-Day Shipping |
+|         601 |   22 | South Carolina | 2-Day Shipping |
+|         636 |   27 | South Carolina | 2-Day Shipping |
+|        3405 |   69 | South Carolina | 2-Day Shipping |
+|         964 |   21 | South Carolina | 2-Day Shipping |
+|        1014 |   59 | South Carolina | 2-Day Shipping |
+|          91 |   25 | South Carolina | Express        |
+|         153 |   30 | South Carolina | Express        |
+|        1179 |   37 | South Carolina | Express        |
+|         377 |   51 | South Carolina | Express        |
+|        1185 |   63 | South Carolina | Express        |
+|         625 |   55 | South Carolina | Express        |
+|        2661 |   24 | South Carolina | Express        |
+|         503 |   59 | South Carolina | Express        |
+|        2076 |   46 | South Carolina | Express        |
+|        3757 |   64 | South Carolina | Express        |
+|        3709 |   40 | South Carolina | Express        |
+|        3476 |   48 | South Carolina | Express        |
+|        2969 |   26 | South Carolina | Express        |
+|         911 |   49 | South Carolina | Express        |
+|        2041 |   69 | South Carolina | Free Shipping  |
+|         137 |   39 | South Carolina | Free Shipping  |
+|         349 |   56 | South Carolina | Free Shipping  |
+|        2106 |   65 | South Carolina | Free Shipping  |
+|        2603 |   65 | South Carolina | Free Shipping  |
+|         521 |   51 | South Carolina | Free Shipping  |
+|        3419 |   53 | South Carolina | Free Shipping  |
+|        3517 |   34 | South Carolina | Free Shipping  |
+|        3601 |   67 | South Carolina | Free Shipping  |
+|        3721 |   21 | South Carolina | Free Shipping  |
+|        1673 |   18 | South Carolina | Free Shipping  |
+|        3477 |   68 | South Carolina | Free Shipping  |
+|        1083 |   54 | South Carolina | Next Day Air   |
+|         882 |   52 | South Carolina | Next Day Air   |
+|        1698 |   36 | South Carolina | Next Day Air   |
+|         528 |   21 | South Carolina | Next Day Air   |
+|         541 |   49 | South Carolina | Next Day Air   |
+|         573 |   56 | South Carolina | Next Day Air   |
+|         586 |   69 | South Carolina | Next Day Air   |
+|        3289 |   67 | South Carolina | Next Day Air   |
+|        3237 |   63 | South Carolina | Next Day Air   |
+|        2033 |   46 | South Carolina | Next Day Air   |
+|        2171 |   40 | South Carolina | Next Day Air   |
+|        1350 |   21 | South Carolina | Next Day Air   |
+|        1191 |   62 | South Carolina | Next Day Air   |
+|         810 |   48 | South Carolina | Next Day Air   |
+|        1548 |   46 | South Carolina | Standard       |
+|        2095 |   53 | South Carolina | Standard       |
+|        2262 |   58 | South Carolina | Standard       |
+|        2805 |   65 | South Carolina | Standard       |
+|          92 |   44 | South Carolina | Standard       |
+|        2818 |   25 | South Carolina | Standard       |
+|         907 |   41 | South Carolina | Standard       |
+|         861 |   26 | South Carolina | Standard       |
+|        3597 |   28 | South Carolina | Standard       |
+|        2063 |   54 | South Carolina | Standard       |
+|        3690 |   47 | South Carolina | Standard       |
+|         397 |   46 | South Carolina | Standard       |
+|         406 |   41 | South Carolina | Standard       |
+|        2807 |   45 | South Carolina | Standard       |
+|        1797 |   62 | South Carolina | Store Pickup   |
+|        1958 |   68 | South Carolina | Store Pickup   |
+|        3295 |   62 | South Carolina | Store Pickup   |
+|        2333 |   36 | South Carolina | Store Pickup   |
+|        3703 |   58 | South Carolina | Store Pickup   |
+|        1635 |   28 | South Carolina | Store Pickup   |
+|        2072 |   69 | South Carolina | Store Pickup   |
+|        1311 |   43 | South Carolina | Store Pickup   |
+|         461 |   64 | South Carolina | Store Pickup   |
++-------------+------+----------------+----------------+
+76 rows in set (0.01 sec)
+
+--using and /or/between...
+
+mysql> select customer_id,age,location,shipping_type,promo_code_used from shopping_trends where location ='south carolina'and shipping_type='store pickup' order by promo_code_used  ;
++-------------+------+----------------+---------------+-----------------+
+| customer_id | age  | location       | shipping_type | promo_code_used |
++-------------+------+----------------+---------------+-----------------+
+|        1797 |   62 | South Carolina | Store Pickup  | No              |
+|        1958 |   68 | South Carolina | Store Pickup  | No              |
+|        2072 |   69 | South Carolina | Store Pickup  | No              |
+|        2333 |   36 | South Carolina | Store Pickup  | No              |
+|        3295 |   62 | South Carolina | Store Pickup  | No              |
+|        3703 |   58 | South Carolina | Store Pickup  | No              |
+|         461 |   64 | South Carolina | Store Pickup  | Yes             |
+|        1311 |   43 | South Carolina | Store Pickup  | Yes             |
+|        1635 |   28 | South Carolina | Store Pickup  | Yes             |
++-------------+------+----------------+---------------+-----------------+
+9 rows in set (0.01 sec)
+
+-useing age as a criteria
+
+mysql> select customer_id,age,location,shipping_type,promo_code_used from shopping_trends where location ='south carolina'and shipping_type='store pickup'and age >=60 order by promo_code_used  ;
++-------------+------+----------------+---------------+-----------------+
+| customer_id | age  | location       | shipping_type | promo_code_used |
++-------------+------+----------------+---------------+-----------------+
+|        1797 |   62 | South Carolina | Store Pickup  | No              |
+|        1958 |   68 | South Carolina | Store Pickup  | No              |
+|        2072 |   69 | South Carolina | Store Pickup  | No              |
+|        3295 |   62 | South Carolina | Store Pickup  | No              |
+|         461 |   64 | South Carolina | Store Pickup  | Yes             |
++-------------+------+----------------+---------------+-----------------+
+5 rows in set (0.01 sec)
+
+mysql>

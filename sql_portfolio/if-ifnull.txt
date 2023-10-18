@@ -1,0 +1,29 @@
+--if function
+mysql> select customer_id,age,gender,size,if (size = 'S',"slim size","big size") as s from shopping_trends limit 10;
++-------------+------+--------+------+-----------+
+| customer_id | age  | gender | size | s         |
++-------------+------+--------+------+-----------+
+|           1 |   55 | Male   | L    | big size  |
+|           2 |   19 | Male   | L    | big size  |
+|           3 |   50 | Male   | S    | slim size |
+|           4 |   21 | Male   | M    | big size  |
+|           5 |   45 | Male   | M    | big size  |
+|           6 |   46 | Male   | M    | big size  |
+|           7 |   63 | Male   | M    | big size  |
+|           8 |   27 | Male   | L    | big size  |
+|           9 |   26 | Male   | L    | big size  |
+|          10 |   57 | Male   | M    | big size  |
++-------------+------+--------+------+-----------+
+10 rows in set (0.00 sec)
+
+
+---IFNULL (Expression1, Expression2)  
+
+The IFNULL function accepts two expressions, and if the first expression is not null, it returns the first arguments. If the first expression is null, it returns the second argument. This function returns either string or numeric value, depending on the context where it is used.
+
+---NULLIF
+NULLIF (Expression1, Expression2) 
+t returns Null when expression1 is equal to expression2. Otherwise, it will return expression1.
+
+
+  

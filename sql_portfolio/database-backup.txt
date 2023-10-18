@@ -1,0 +1,3 @@
+-- back-up database
+C:\Users\lenovo>mysqldump -u root -p shopping > F:\shopping.sql
+Enter password: **********

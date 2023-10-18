@@ -1,0 +1,27 @@
+CASE value   
+    WHEN [compare_value] THEN result   
+    [WHEN [compare_value] THEN result ...]   
+    [ELSE result]   
+END
+ mysql> select customer_id,age,gender,category,
+    -> CASE category
+    ->    when 'clothing' then 'shirts or pants or t-shits'
+    ->    when 'Footwear' then 'shoes or crocs or flipflaps or sandels'
+    ->    when 'outerwear' then 'hoodies,jackets'
+    ->   else 'accessories-belts or lipstic or purfumes'
+    -> end as category_list from shopping_trends limit 10;
++-------------+------+--------+-------------+------------------------------------------+
+| customer_id | age  | gender | category    | category_list                            |
++-------------+------+--------+-------------+------------------------------------------+
+|           1 |   55 | Male   | Clothing    | shirts or pants or t-shits               |
+|           2 |   19 | Male   | Clothing    | shirts or pants or t-shits               |
+|           3 |   50 | Male   | Clothing    | shirts or pants or t-shits               |
+|           4 |   21 | Male   | Footwear    | shoes or crocs or flipflaps or sandels   |
+|           5 |   45 | Male   | Clothing    | shirts or pants or t-shits               |
+|           6 |   46 | Male   | Footwear    | shoes or crocs or flipflaps or sandels   |
+|           7 |   63 | Male   | Clothing    | shirts or pants or t-shits               |
+|           8 |   27 | Male   | Clothing    | shirts or pants or t-shits               |
+|           9 |   26 | Male   | Outerwear   | hoodies,jackets                          |
+|          10 |   57 | Male   | Accessories | accessories-belts or lipstic or purfumes |
++-------------+------+--------+-------------+------------------------------------------+
+10 rows in set (0.00 sec)
